@@ -58,6 +58,17 @@ end
   end
 
 
-def checkout(cart, coupons)
-  # code here
-end
+  def checkout(cart, coupons)
+  	total = 0
+  	consolidated = consolidate_cart(cart)
+    	couponed = apply_coupons(consolidated, coupons)
+    	cleared = apply_clearance(couponed)
+    	cleared.each do |food, details|
+    		total += cleared[food][:price] * cleared[food][:count]
+    	end
+      if total > 100
+      		total = (total * 0.9).round(2)
+      	else total
+      	end
+
+  end

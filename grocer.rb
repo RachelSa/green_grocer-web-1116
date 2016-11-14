@@ -35,7 +35,7 @@ end
   				      num_coups= cart[food][:count] / c[:num]
   				        coups = c[:cost] * (num_coups)
   				        clear = cart[food][:clearance]
-  				        adjusted["#{food} W/COUPON"] = {price: coups, clearance: clear, count: num_coups}
+  				        adjusted["#{food} W/COUPON"] = {price: c[:cost], clearance: clear, count: num_coups}
   				        remaining = cart[food][:count] % c[:num]
   				        result[food] = detail
   				        result[food][:count] = remaining

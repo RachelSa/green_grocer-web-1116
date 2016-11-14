@@ -31,13 +31,15 @@ end
   coupons.each do |c|
   	cart.each do |food, detail|
   			if food == c[:item]
-  				num_coups= cart[food][:count] / c[:num]
-  				coups = c[:cost] * (num_coups)
-  				clear = cart[food][:clearance]
-  				adjusted["#{food} W/COUPON"] = {price: coups, clearance: clear, count: num_coups}
-  				remaining = cart[food][:count] % c[:num]
-  				result[food] = detail
-  				result[food][:count] = remaining
+          if cart[food][:count] >= c[:num]
+  				      num_coups= cart[food][:count] / c[:num]
+  				        coups = c[:cost] * (num_coups)
+  				        clear = cart[food][:clearance]
+  				        adjusted["#{food} W/COUPON"] = {price: coups, clearance: clear, count: num_coups}
+  				        remaining = cart[food][:count] % c[:num]
+  				        result[food] = detail
+  				        result[food][:count] = remaining
+                end
   			else result[food] = detail
   			end
   		end
